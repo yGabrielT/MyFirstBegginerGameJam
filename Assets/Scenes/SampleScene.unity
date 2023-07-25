@@ -131,6 +131,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2027258653873573044, guid: 7f8c563cf6e3c2e4a8b4f9fd6c69adaa,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027258653873573044, guid: 7f8c563cf6e3c2e4a8b4f9fd6c69adaa,
+        type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 1751497894}
     - target: {fileID: 5543926271082954339, guid: 7f8c563cf6e3c2e4a8b4f9fd6c69adaa,
         type: 3}
       propertyPath: m_RootOrder
@@ -372,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characters:
-  - {fileID: 0}
+  - {fileID: 1518489435}
   - {fileID: 191836661581775726}
   characterPlayer:
   - {fileID: 0}
@@ -381,6 +391,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   characterIndex: 0
+  characterCombatScript:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +564,18 @@ Transform:
 --- !u!1 &1518489435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8662297180974734899, guid: 7f8c563cf6e3c2e4a8b4f9fd6c69adaa,
+    type: 3}
+  m_PrefabInstance: {fileID: 66890484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1518489437 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5543926271082954339, guid: 7f8c563cf6e3c2e4a8b4f9fd6c69adaa,
+    type: 3}
+  m_PrefabInstance: {fileID: 66890484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1751497894 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2962099657326548661, guid: 7f8c563cf6e3c2e4a8b4f9fd6c69adaa,
     type: 3}
   m_PrefabInstance: {fileID: 66890484}
   m_PrefabAsset: {fileID: 0}
@@ -1303,10 +1328,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2243307895213360368}
-  targetPos: {fileID: 1518489435}
+  targetPos: {fileID: 1518489437}
   distanceToTarget: 0
   Attackrange: 3
-  isAttacking: 0
   combatEnemy: {fileID: 1154521366108896501}
 --- !u!4 &7077555728061960190
 Transform:

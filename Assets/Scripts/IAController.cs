@@ -10,10 +10,9 @@ public class IAController : MonoBehaviour
     public Transform targetPos;
     [SerializeField] private float distanceToTarget;
     [SerializeField] private float Attackrange;
-    [SerializeField] private bool isAttacking = false;
     [SerializeField] private CombatScript combatEnemy;
     private float timeElapsed = .5f;
-    private float NextMoveCD = 0.5f;
+    private float NextMoveCD = 0.25f;
     void Start()
     {
         
@@ -55,8 +54,10 @@ public class IAController : MonoBehaviour
 
     void MoveAI()
     {
-        if(distanceToTarget >= Attackrange)
+        NextMoveCD -= Time.deltaTime;
+        if(distanceToTarget >= Attackrange && NextMoveCD <= 0)
         {
+            NextMoveCD = .25f;
             transform.LookAt(targetPos.position);
             agent.SetDestination(targetPos.position);
         }

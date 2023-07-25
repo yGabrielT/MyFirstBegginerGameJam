@@ -15,12 +15,12 @@ public class WeaponFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if(playerPos.gameObject.activeSelf)
+        if(playerPos.gameObject.activeSelf && playerPos != null)
         {
             this.transform.position = new Vector3(playerPos.transform.position.x, transform.position.y, playerPos.transform.position.z);
             this.transform.rotation = Quaternion.Euler(0, playerPos.localRotation.y, 0);
         }
-        else
+        if(IAPos.gameObject.activeSelf &&  IAPos != null)
         {
             this.transform.position = new Vector3(IAPos.transform.position.x, transform.position.y, IAPos.transform.position.z);
             this.transform.rotation = Quaternion.Euler(0, IAPos.localRotation.y, 0);

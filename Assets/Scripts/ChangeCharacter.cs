@@ -12,6 +12,7 @@ public class ChangeCharacter : MonoBehaviour
     [SerializeField] private Transform[] characterIA;
     public int characterIndex;
     private bool change = false;
+    [SerializeField] private CombatScript[] characterCombatScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class ChangeCharacter : MonoBehaviour
             ChangeCamera();
             
         }
+        
     }
 
     void FindRootCamera()
@@ -36,22 +38,43 @@ public class ChangeCharacter : MonoBehaviour
         Invoke("Cooldown", 2f);
         if (characters[characterIndex + 1] != null && characters[characterIndex].gameObject.activeSelf)
         {
-            Debug.Log("Procurando");
+            Debug.Log("Searching");
+
+            //Find all character transforms for IA and players
             characterPlayer[characterIndex] = characters[characterIndex].transform.Find("Player");
             characterPlayer[characterIndex + 1] = characters[characterIndex + 1].transform.Find("Player");
             characterIA[characterIndex + 1] = characters[characterIndex + 1].transform.Find("IA");
+
+            //Find all combatsScripts to change later
+            characterCombatScript[characterIndex + 1] = characters[characterIndex + 1].GetComponent<CombatScript>();
+
+        }
+        else
+        {
+            Debug.Log("No more characters");
         }
     }
 
     void ChangeCamera()
     {
-        characterPlayer[characterIndex].GetComponent<CombatScript>().isPlayer = false;
+        //Deactivate previous player
         characterPlayer[characterIndex].gameObject.SetActive(false);
-        characterPlayer[characterIndex].GetComponent<CombatScript>().isPlayer = true;
+        Destroy(characters[characterIndex].gameObject, 2f);
+
+        //Activate next player bool to true
+        if (characterCombatScript[characterIndex + 1] != null)
+        {
+            characterCombatScript[characterIndex + 1].isPlayer = true;
+        }
+        else
+        {
+            Debug.Log(characterCombatScript[characterIndex + 1]);
+        }
+        
+        //Activate player and deactivate previous IA
         characterIA[characterIndex + 1].gameObject.SetActive(false);
         characterPlayer[characterIndex + 1].gameObject.SetActive(true);
         characterIndex++;
-
     }
 
     void Cooldown()
