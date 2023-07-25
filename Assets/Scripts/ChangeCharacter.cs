@@ -45,7 +45,9 @@ public class ChangeCharacter : MonoBehaviour
 
     void ChangeCamera()
     {
+        characterPlayer[characterIndex].GetComponent<CombatScript>().isPlayer = false;
         characterPlayer[characterIndex].gameObject.SetActive(false);
+        characterPlayer[characterIndex].GetComponent<CombatScript>().isPlayer = true;
         characterIA[characterIndex + 1].gameObject.SetActive(false);
         characterPlayer[characterIndex + 1].gameObject.SetActive(true);
         characterIndex++;

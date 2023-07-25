@@ -67,7 +67,7 @@ namespace StarterAssets
 		[SerializeField] private PlayerInput _playerInput;
 #endif
 		private CharacterController _controller;
-		private StarterAssetsInputs _input;
+        public StarterAssetsInputs _input;
 		private GameObject _mainCamera;
 		private const float _threshold = 0.01f;
 		
@@ -91,8 +91,8 @@ namespace StarterAssets
 
         private void Awake()
 		{
-			// get a reference to our main camera
-			if (_mainCamera == null)
+            // get a reference to our main camera
+            if (_mainCamera == null)
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
@@ -102,8 +102,6 @@ namespace StarterAssets
 		{
 			originalFOV = cinemachineCam.m_Lens.FieldOfView;
 			_controller = GetComponent<CharacterController>();
-			_input = StarterAssetsInputs.instance;
-
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;

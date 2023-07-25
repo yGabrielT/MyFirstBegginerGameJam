@@ -25,9 +25,17 @@ namespace StarterAssets
 		public bool cursorInputForLook = true;
 
 
-        private void Start()
+        private void Awake()
         {
-            instance = this;
+			if(instance != null && instance!= this)
+			{
+				Destroy(gameObject);
+			}
+			else
+			{
+                instance = this;
+            }
+            
         }
 
 #if ENABLE_INPUT_SYSTEM
