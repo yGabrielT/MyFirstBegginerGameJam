@@ -5,25 +5,36 @@ using UnityEngine;
 public class WeaponFollow : MonoBehaviour
 {
     [SerializeField] private Transform playerPos;
-    [SerializeField] private Transform IAPos;
+    [SerializeField] private Transform IAPlaceHolderPos;
+    [SerializeField]private Transform WeaponPlaceHolder;
+    [SerializeField]private Transform Weapon;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if(playerPos.gameObject.activeSelf && playerPos != null)
+        
+        if (!playerPos.gameObject.activeSelf && !IAPlaceHolderPos.gameObject.activeSelf && Weapon != null)
         {
-            this.transform.position = new Vector3(playerPos.transform.position.x, transform.position.y, playerPos.transform.position.z);
-            this.transform.rotation = Quaternion.Euler(0, playerPos.localRotation.y, 0);
+            Destroy(Weapon.gameObject);
+            return;
         }
-        if(IAPos.gameObject.activeSelf &&  IAPos != null)
+
+
+        if (playerPos.gameObject.activeSelf && playerPos != null)
         {
-            this.transform.position = new Vector3(IAPos.transform.position.x, transform.position.y, IAPos.transform.position.z);
-            this.transform.rotation = Quaternion.Euler(0, IAPos.localRotation.y, 0);
+            Weapon.SetParent(WeaponPlaceHolder);
         }
+        if(!playerPos.gameObject.activeSelf &&  IAPlaceHolderPos != null)
+        {
+            Weapon.SetParent(IAPlaceHolderPos);
+        }
+        
+        
+        
     }
+
 }
