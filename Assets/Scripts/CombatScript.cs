@@ -19,6 +19,8 @@ public class CombatScript : MonoBehaviour
     private bool canAttack = true;
     public bool isPlayer = true;
     private Animator swordAnimator;
+    private ShootArrow _shoot;
+    [SerializeField] private float _cooldown = 1f;
 
     void Awake()
     {
@@ -42,7 +44,7 @@ public class CombatScript : MonoBehaviour
 
                     break;
                 case Creature.Skeleton:
-
+                    SkeletonAttack();
                     break;
 
             }
@@ -60,22 +62,37 @@ public class CombatScript : MonoBehaviour
 
                     break;
                 case Creature.Skeleton:
-
+                    SkeletonAttack();
                     break;
 
             }
     }
-    public void HumanAttack()
+    private void HumanAttack()
     {
         if (swordAnimator == null) swordAnimator = weapon.GetComponent<Animator>();
         if (canAttack)
         {
             canAttack = false;
             swordAnimator.SetTrigger("Attack");
-            Invoke("OnCooldown", 1.5f);
+            Invoke("OnCooldown", _cooldown);
         }
             
 
+    }
+
+    private void SkeletonAttack()
+    {
+        if(_shoot == null)
+        {
+            _shoot = GetComponentInChildren<ShootArrow>();
+        }
+        else if(canAttack)
+        {
+            canAttack = false;
+            _shoot.Shoot();
+            Invoke("OnCooldown", _cooldown);
+        }
+        
     }
     private void OnCooldown()
     {

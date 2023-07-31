@@ -43,11 +43,11 @@ public class CharacterAnimator : MonoBehaviour
         {
             speedFactor = Mathf.Lerp(speedFactor, 0, mutiplyTime * Time.deltaTime);
         }
-        if (_playerAnimator != null)
+        if (_playerAnimator != null && _playerAnimator.isActiveAndEnabled)
         {
             _playerAnimator.SetFloat(_agentSpeed, speedPlayerFactor);
         }
-        if (_iaAnimator != null)
+        if (_iaAnimator != null && _iaAnimator.isActiveAndEnabled)
         {
             _iaAnimator.SetFloat(_agentSpeed, speedFactor);
         }
