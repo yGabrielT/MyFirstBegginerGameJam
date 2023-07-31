@@ -26,11 +26,11 @@ public class WeaponFollow : MonoBehaviour
 
         if (playerPos.gameObject.activeSelf && playerPos != null)
         {
-            Weapon.SetParent(WeaponPlaceHolder);
+            Weapon.SetParent(WeaponPlaceHolder, false);
         }
         if(!playerPos.gameObject.activeSelf &&  IAPlaceHolderPos != null)
         {
-            Weapon.SetParent(IAPlaceHolderPos);
+            Weapon.SetParent(IAPlaceHolderPos, false);
         }
         
         

@@ -14,10 +14,11 @@ public class CombatScript : MonoBehaviour
         Spider
     }
 
-    [SerializeField] private Animator weaponAnimator;
+    [SerializeField] private GameObject weapon;
     public Creature creature;
     private bool canAttack = true;
     public bool isPlayer = true;
+    private Animator swordAnimator;
 
     void Awake()
     {
@@ -66,11 +67,11 @@ public class CombatScript : MonoBehaviour
     }
     public void HumanAttack()
     {
-
+        if (swordAnimator == null) swordAnimator = weapon.GetComponent<Animator>();
         if (canAttack)
         {
-            canAttack = false;    
-            weaponAnimator.SetTrigger("Attack");
+            canAttack = false;
+            swordAnimator.SetTrigger("Attack");
             Invoke("OnCooldown", 1.5f);
         }
             
