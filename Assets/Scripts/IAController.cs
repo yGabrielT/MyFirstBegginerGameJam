@@ -30,21 +30,25 @@ public class IAController : MonoBehaviour
         }
     }
 
-    void FindActualPlayer()
+    private void FindActualPlayer()
     {
-
-        if(GameObject.FindWithTag("Character").TryGetComponent(out CombatScript combScript))
+        //Puts every character in an array to find the player transform
+        if (targetPos == null)
         {
-            if(combScript.isPlayer == true)
+            var gObjs = GameObject.FindGameObjectsWithTag("Character");
+            for (int i = 0; i < gObjs.Length; i++)
             {
-                var mainObj = combScript.gameObject;
-                targetPos = mainObj.transform.Find("Player");
-            }
-            else
-            {
-                return;
+                if (gObjs[i].GetComponent<CombatScript>().isPlayer && gObjs[i].activeSelf)
+                {
+                    targetPos = gObjs[i].transform.Find("Player");
+                }
+                else
+                {
+                    Debug.Log("No player Found or player game object dont have (Player) in his name");
+                }
             }
         }
+        
     }
 
     void TakeDamage()
@@ -55,18 +59,21 @@ public class IAController : MonoBehaviour
 
     void MoveAI()
     {
+        //Look at player everytime
         transform.LookAt(targetPos.position);
+
+        //Limits attack range
         if (distanceToTarget >= Attackrange)
         {
             agent.speed = agentOriginalSpeed;
             agent.SetDestination(targetPos.position);
         }
-        else
+        // If is close dont walk more
+        else 
         {
             agent.speed = 0;
         }
-
-
+            
     }
 
     void Attack()

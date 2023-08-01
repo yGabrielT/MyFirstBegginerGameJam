@@ -16,7 +16,7 @@ public class ChangeCharacter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        OrganizeArray();
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class ChangeCharacter : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.F) && !change && characterIndex + 1 != characters.Length) 
         {
-            
+            OrganizeArray();
             FindRootCamera();
             ChangeCamera();
             
@@ -34,6 +34,7 @@ public class ChangeCharacter : MonoBehaviour
 
     void FindRootCamera()
     {
+        
         change = true;
         Invoke("Cooldown", 2f);
         if (characters[characterIndex + 1] != null && characters[characterIndex].gameObject.activeSelf)
@@ -74,7 +75,6 @@ public class ChangeCharacter : MonoBehaviour
         //Activate player and deactivate previous IA
         characterIA[characterIndex + 1].gameObject.SetActive(false);
         characterPlayer[characterIndex + 1].gameObject.SetActive(true);
-        characterIndex++;
     }
 
     void Cooldown()
@@ -82,4 +82,50 @@ public class ChangeCharacter : MonoBehaviour
         change = false;
     }
 
+    GameObject FindPlayerArray()
+    {
+        while (true)
+        {
+            var gObjsPlayer = GameObject.FindGameObjectsWithTag("Character");
+
+            for (int j = 0; j < gObjsPlayer.Length; j++)
+            {
+                if (gObjsPlayer[j].GetComponent<CombatScript>().isPlayer && gObjsPlayer[j].activeSelf)
+                {
+                    return gObjsPlayer[j].gameObject;
+                }
+                else
+                {
+                    Debug.Log("No player Found while changing character");
+                }
+            }
+        }
+    }
+
+    GameObject FindEnemiesArray()
+    {
+        while (true)
+        {
+            var gObjsEnemies = GameObject.FindGameObjectsWithTag("Character");
+
+            for (int x = 0; x < gObjsEnemies.Length; x++)
+            {
+                if (!gObjsEnemies[x].GetComponent<CombatScript>().isPlayer && gObjsEnemies[x].activeSelf)
+                {
+                    return gObjsEnemies[x].gameObject;
+                }
+                else
+                {
+                    Debug.Log("No enemy Found while changing character");
+                }
+            }
+        }
+    }
+
+    void OrganizeArray()
+    {
+        characterIndex = 0;
+        characters[characterIndex] = FindPlayerArray();
+        characters[characterIndex + 1] = FindEnemiesArray();
+    }
 }

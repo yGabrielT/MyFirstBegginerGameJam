@@ -1161,7 +1161,7 @@ GameObject:
   - component: {fileID: 4981771092530316129}
   - component: {fileID: 4655412849432159206}
   m_Layer: 0
-  m_Name: IAplaceHolder
+  m_Name: Skeleton
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
