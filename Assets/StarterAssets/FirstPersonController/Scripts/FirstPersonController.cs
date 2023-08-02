@@ -64,10 +64,10 @@ namespace StarterAssets
 
 	
 #if ENABLE_INPUT_SYSTEM
-		[SerializeField] private PlayerInput _playerInput;
+		private PlayerInput _playerInput;
 #endif
 		private CharacterController _controller;
-        public StarterAssetsInputs _input;
+        private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
 		private const float _threshold = 0.01f;
 		
@@ -91,6 +91,8 @@ namespace StarterAssets
 
         private void Awake()
 		{
+			_input = GameObject.FindWithTag("Main Controls").GetComponent<StarterAssetsInputs>();
+			_playerInput = GameObject.FindWithTag("Main Controls").GetComponent<PlayerInput>();
             // get a reference to our main camera
             if (_mainCamera == null)
 			{

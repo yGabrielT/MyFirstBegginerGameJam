@@ -19,7 +19,9 @@ public class CombatScript : MonoBehaviour
     private bool canAttack = true;
     public bool isPlayer = true;
     private Animator swordAnimator;
-    private ShootArrow _shoot;
+    private ShootArrow _shootArrow;
+    private ShootWeb _shootWeb;
+    private Animator _shootWebAnimator;
     [SerializeField] private float _cooldown = 1f;
 
     void Awake()
@@ -41,7 +43,7 @@ public class CombatScript : MonoBehaviour
                     HumanAttack();
                     break;
                 case Creature.Spider:
-
+                    SpiderAttack();
                     break;
                 case Creature.Skeleton:
                     SkeletonAttack();
@@ -59,7 +61,7 @@ public class CombatScript : MonoBehaviour
                     HumanAttack();
                     break;
                 case Creature.Spider:
-
+                    SpiderAttack();
                     break;
                 case Creature.Skeleton:
                     SkeletonAttack();
@@ -79,17 +81,37 @@ public class CombatScript : MonoBehaviour
             
 
     }
+    private void SpiderAttack()
+    {
+        if (_shootWebAnimator == null)
+        {
+            _shootWebAnimator = GetComponentInChildren<Animator>();
+        }
+        if (_shootWeb == null)
+        {
+            _shootWeb = GetComponentInChildren<ShootWeb>();
+        }
+        else if (canAttack)
+        {
+            _shootWebAnimator.SetTrigger("Attack");
+            canAttack = false;
+            _shootWeb.Shoot(isPlayer);
+            Invoke("OnCooldown", _cooldown);
+        }
+        
+        
+    }
 
     private void SkeletonAttack()
     {
-        if(_shoot == null)
+        if(_shootArrow == null)
         {
-            _shoot = GetComponentInChildren<ShootArrow>();
+            _shootArrow = GetComponentInChildren<ShootArrow>();
         }
         else if(canAttack)
         {
             canAttack = false;
-            _shoot.Shoot();
+            _shootArrow.Shoot();
             Invoke("OnCooldown", _cooldown);
         }
         

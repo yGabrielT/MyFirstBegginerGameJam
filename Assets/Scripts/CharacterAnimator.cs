@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using StarterAssets;
+using Unity.VisualScripting;
 
 public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _playerAnimator;
     [SerializeField] private Animator _iaAnimator;
-    [SerializeField] private StarterAssetsInputs _input;
+    private StarterAssetsInputs _input;
     [SerializeField] private NavMeshAgent _iaAgent;
     private int _agentSpeed;
     public float speeds;
@@ -18,7 +19,7 @@ public class CharacterAnimator : MonoBehaviour
 
     private void Start()
     {
-        
+        _input = GameObject.FindWithTag("Main Controls").GetComponent<StarterAssetsInputs>();
         _agentSpeed = Animator.StringToHash("Speed");
     }
     private void Update()
