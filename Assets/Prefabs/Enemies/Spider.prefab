@@ -206,7 +206,7 @@ MonoBehaviour:
   agent: {fileID: 4957713538302801085}
   targetPos: {fileID: 0}
   distanceToTarget: 0
-  Attackrange: 36.3
+  Attackrange: 20.1
   combatEnemy: {fileID: 5325815091077779667}
 --- !u!1 &639762531586885822
 GameObject:
@@ -828,6 +828,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2576929421631405226}
   - component: {fileID: 3800097442122459735}
+  - component: {fileID: 369186427635663810}
+  - component: {fileID: 1421660923713027302}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -873,6 +875,44 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &369186427635663810
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233155156012431018}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.1289146, y: 1.1859452, z: 3.0383806}
+  m_Center: {x: -0.120110154, y: 0.9688811, z: -0.8146072}
+--- !u!114 &1421660923713027302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2233155156012431018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2547f43fbc83497419f181b6779368e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cbScript: {fileID: 5325815091077779667}
+  isPlayerDamaged: 1
+  _arrowDamage: 20
+  _swordDamage: 10
+  _webDamage: 30
 --- !u!1 &2253540138611880479
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,7 +2266,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4481980504276178557}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.059, y: 1.942, z: 1.427}
+  m_LocalPosition: {x: 0, y: 2.1811, z: 1.4759998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2529,7 +2569,7 @@ Transform:
   - {fileID: 1132851240806779663}
   - {fileID: 5642277398701420596}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5325815091077779667
 MonoBehaviour:
@@ -2546,7 +2586,9 @@ MonoBehaviour:
   weapon: {fileID: 7153087677298584635}
   creature: 2
   isPlayer: 0
-  _cooldown: 4
+  _cooldown: 2
+  IAHealth: 100
+  PlayerHealth: 100
 --- !u!195 &4957713538302801085
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2599,7 +2641,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerAnimator: {fileID: 3800097442122459735}
   _iaAnimator: {fileID: 8314340813051622593}
-  _input: {fileID: 0}
   _iaAgent: {fileID: 4957713538302801085}
   speeds: 0
   mutiplyTime: 3
@@ -3207,14 +3248,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6338382226983820286}
-  m_LocalRotation: {x: -0, y: 0.16620065, z: -0, w: 0.986092}
-  m_LocalPosition: {x: 0.184, y: 1.1400001, z: 0.62}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.1, y: 1, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8423217835731032571}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 19.134, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6368854057764495564
 GameObject:
   m_ObjectHideFlags: 0
@@ -3302,7 +3343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6441397300810615231}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.125, y: 1.208, z: 1.289}
+  m_LocalPosition: {x: -0.1, y: 1, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3707,7 +3748,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7153087677298584635}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.092}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3728,9 +3769,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   webPrefab: {fileID: 7239666725292544924, guid: 17eaca1d4a1c57c4a87dff32f0d37273,
     type: 3}
-  webForce: 15
+  webForce: 30
   aiPos: {fileID: 6441397300810615231}
-  camPos: {fileID: 0}
 --- !u!1 &7218418818470626417
 GameObject:
   m_ObjectHideFlags: 0
@@ -3992,6 +4032,8 @@ GameObject:
   m_Component:
   - component: {fileID: 787887665170394463}
   - component: {fileID: 8314340813051622593}
+  - component: {fileID: 1547341841657938634}
+  - component: {fileID: 4028812656154180884}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -4037,6 +4079,44 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &1547341841657938634
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580839466630866171}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.1289146, y: 1.1859452, z: 3.0383806}
+  m_Center: {x: -0.120110154, y: 0.9688811, z: -0.8146072}
+--- !u!114 &4028812656154180884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580839466630866171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2547f43fbc83497419f181b6779368e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cbScript: {fileID: 5325815091077779667}
+  isPlayerDamaged: 0
+  _arrowDamage: 20
+  _swordDamage: 10
+  _webDamage: 30
 --- !u!1 &7670311662875525563
 GameObject:
   m_ObjectHideFlags: 0
@@ -4488,8 +4568,6 @@ MonoBehaviour:
   CinemachineCameraTarget: {fileID: 639762531586885822}
   TopClamp: 80
   BottomClamp: -80
-  _playerInput: {fileID: 0}
-  _input: {fileID: 0}
   cinemachineCam: {fileID: 413925289370130948}
   sprintingFOV: 70
   durationFOV: 5

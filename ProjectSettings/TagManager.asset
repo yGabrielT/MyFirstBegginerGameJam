@@ -7,6 +7,9 @@ TagManager:
   - CinemachineTarget
   - Character
   - Main Controls
+  - Web
+  - Sword
+  - Arrow
   layers:
   - Default
   - TransparentFX

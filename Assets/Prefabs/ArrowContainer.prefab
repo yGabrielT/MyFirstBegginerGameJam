@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8027535630383368295}
   - component: {fileID: 710543022131211210}
+  - component: {fileID: 7062690910598920748}
   m_Layer: 0
   m_Name: ArrowContainer
-  m_TagString: Untagged
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 6727967898984224543}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &710543022131211210
 Rigidbody:
@@ -60,6 +61,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7062690910598920748
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606281439943741533}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.10755348, y: 0.074299574, z: 0.74142456}
+  m_Center: {x: 0.0064878464, y: -0.010246038, z: 0.009653091}
 --- !u!1 &3740044333242594931
 GameObject:
   m_ObjectHideFlags: 0

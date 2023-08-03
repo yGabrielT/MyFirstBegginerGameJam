@@ -7,13 +7,25 @@ using UnityEngine.TextCore.Text;
 
 public class ChangeCharacter : MonoBehaviour
 {
+    public static ChangeCharacter Instance; 
     [SerializeField] private GameObject[] characters;
     [SerializeField] private Transform[] characterPlayer;
     [SerializeField] private Transform[] characterIA;
     public int characterIndex;
     private bool change = false;
+    public bool toChangeNow = false;
     [SerializeField] private CombatScript[] characterCombatScript;
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     void Start()
     {
         OrganizeArray();
@@ -22,8 +34,9 @@ public class ChangeCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F) && !change && characterIndex + 1 != characters.Length) 
+        if(Input.GetKeyDown(KeyCode.F) && !change && characterIndex + 1 != characters.Length && characters[characterIndex + 1] != null && characters[characterIndex] != null) 
         {
+            toChangeNow = false;
             OrganizeArray();
             FindRootCamera();
             ChangeCamera();
@@ -124,8 +137,16 @@ public class ChangeCharacter : MonoBehaviour
 
     void OrganizeArray()
     {
-        characterIndex = 0;
-        characters[characterIndex] = FindPlayerArray();
-        characters[characterIndex + 1] = FindEnemiesArray();
+        try
+        {
+            characterIndex = 0;
+            characters[characterIndex] = FindPlayerArray();
+            characters[characterIndex + 1] = FindEnemiesArray();
+        }
+        catch
+        {
+            Debug.Log("Oh no");
+        }
+        
     }
 }

@@ -12,7 +12,6 @@ public class IAController : MonoBehaviour
     [SerializeField] private float Attackrange;
     [SerializeField] private CombatScript combatEnemy;
     private float timeElapsed = .5f;
-    private float NextMoveCD = 0.25f;
     private float agentOriginalSpeed;
     void Start()
     {
@@ -51,17 +50,14 @@ public class IAController : MonoBehaviour
         
     }
 
-    void TakeDamage()
-    {
-        
-
-    }
-
     void MoveAI()
     {
         //Look at player everytime
-        transform.LookAt(targetPos.position);
-
+        transform.LookAt(targetPos.transform);
+        var angle = transform.rotation.eulerAngles;
+        angle.x = 0;
+        angle.z = 0;
+        transform.rotation = Quaternion.Euler(angle);
         //Limits attack range
         if (distanceToTarget >= Attackrange)
         {

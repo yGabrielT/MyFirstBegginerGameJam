@@ -24,11 +24,15 @@ public class CombatScript : MonoBehaviour
     private Animator _shootWebAnimator;
     [SerializeField] private float _cooldown = 1f;
 
+    public float IAHealth = 100;
+    public float PlayerHealth = 100;
+
     void Awake()
     {
     }
     void Update()
     {
+        ChangeOnDeath();
         ManageAttackTypePlayer();
     }
 
@@ -93,8 +97,9 @@ public class CombatScript : MonoBehaviour
         }
         else if (canAttack)
         {
-            _shootWebAnimator.SetTrigger("Attack");
+            
             canAttack = false;
+            _shootWebAnimator.SetTrigger("Attack");
             _shootWeb.Shoot(isPlayer);
             Invoke("OnCooldown", _cooldown);
         }
@@ -119,6 +124,29 @@ public class CombatScript : MonoBehaviour
     private void OnCooldown()
     {
         canAttack = true;
+    }
+
+    public void ManageHealth(bool isPlayerDamaged, int Damage)
+    {
+        if (!isPlayerDamaged)
+        {
+            IAHealth -= Damage;
+        }
+        else
+        {
+            PlayerHealth -= Damage;
+        }
+    }
+    private void ChangeOnDeath()
+    {
+        if (IAHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+        if(PlayerHealth <= 0)
+        {
+            ChangeCharacter.Instance.toChangeNow = true;
+        }
     }
     
 }

@@ -766,6 +766,8 @@ GameObject:
   - component: {fileID: 1138511336034189484}
   - component: {fileID: 4302276007252293638}
   - component: {fileID: 2720239080020993589}
+  - component: {fileID: 1435273504766043292}
+  - component: {fileID: 6910500947122061655}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -863,6 +865,44 @@ MonoBehaviour:
   - m_Rig: {fileID: 5735886435308432967}
     m_Active: 1
   m_Effectors: []
+--- !u!65 &1435273504766043292
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863154329439151331}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6745281, y: 4.9968996, z: 1.6506958}
+  m_Center: {x: -0.02758503, y: 2.7303677, z: -0.01742363}
+--- !u!114 &6910500947122061655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863154329439151331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2547f43fbc83497419f181b6779368e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cbScript: {fileID: 956664035807437563}
+  isPlayer: 1
+  _arrowDamage: 20
+  _swordDamage: 10
+  _webDamage: 30
 --- !u!1 &2880331967765476909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1206,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4258094787300292918
 Transform:
   m_ObjectHideFlags: 0
@@ -1200,7 +1240,9 @@ MonoBehaviour:
   weapon: {fileID: 8722066108900913955}
   creature: 1
   isPlayer: 0
-  _cooldown: 0.5
+  _cooldown: 0.1
+  IAHealth: 100
+  PlayerHealth: 100
 --- !u!195 &2460134873093005500
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1253,7 +1295,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerAnimator: {fileID: 1138511336034189484}
   _iaAnimator: {fileID: 3837108479660614334}
-  _input: {fileID: 0}
   _iaAgent: {fileID: 2460134873093005500}
   speeds: 0
   mutiplyTime: 3
@@ -1829,6 +1870,8 @@ GameObject:
   - component: {fileID: 3837108479660614334}
   - component: {fileID: 2072232261928797375}
   - component: {fileID: 4811295058851534074}
+  - component: {fileID: 3961827787124103142}
+  - component: {fileID: 6877814663661451775}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -1926,6 +1969,44 @@ MonoBehaviour:
   - m_Rig: {fileID: 8902227024896849332}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &3961827787124103142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7028957825145405739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2547f43fbc83497419f181b6779368e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cbScript: {fileID: 956664035807437563}
+  isPlayer: 0
+  _arrowDamage: 20
+  _swordDamage: 10
+  _webDamage: 30
+--- !u!65 &6877814663661451775
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7028957825145405739}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6745281, y: 4.9968996, z: 1.6506958}
+  m_Center: {x: -0.02758503, y: 2.7303677, z: -0.01742363}
 --- !u!1 &7056888939394539061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,7 +2600,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.38
   m_SlopeLimit: 45
   m_StepOffset: 0.25
   m_SkinWidth: 0.02
@@ -2554,8 +2635,6 @@ MonoBehaviour:
   CinemachineCameraTarget: {fileID: 6534515159881935786}
   TopClamp: 80
   BottomClamp: -80
-  _playerInput: {fileID: 0}
-  _input: {fileID: 0}
   cinemachineCam: {fileID: 8735248419211035320}
   sprintingFOV: 70
   durationFOV: 5

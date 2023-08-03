@@ -30,14 +30,14 @@ public class ShootArrow : MonoBehaviour
                 var obj = Instantiate(arrowPrefab, transform.position, aiPos.transform.rotation);
                 var rbobj = obj.GetComponent<Rigidbody>();
                 rbobj.AddForce(obj.transform.forward * ArrowForce, ForceMode.Impulse);
-                Destroy(obj, 10f);
+                Destroy(obj, 5f);
             }
             else
             {
                 var obj = Instantiate(arrowPrefab, transform.position, camPos.transform.rotation);
                 var rbobj = obj.GetComponent<Rigidbody>();
                 rbobj.AddForce(obj.transform.forward * ArrowForce, ForceMode.Impulse);
-                Destroy(obj, 10f);
+                Destroy(obj, 5f);
             }
             
 
