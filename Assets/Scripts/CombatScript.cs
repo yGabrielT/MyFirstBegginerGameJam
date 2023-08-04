@@ -139,13 +139,20 @@ public class CombatScript : MonoBehaviour
     }
     private void ChangeOnDeath()
     {
+        //Change character
         if (IAHealth <= 0)
         {
-            Destroy(gameObject);
+            //Put this character in the array
+            ChangeCharacter.Instance.ChangeWhenKill(gameObject);
+            //Change
+            ChangeCharacter.Instance.toChangeNow = true;
+            IAHealth = 100;
         }
+
+        //game over
         if(PlayerHealth <= 0)
         {
-            ChangeCharacter.Instance.toChangeNow = true;
+            Destroy(gameObject);
         }
     }
     

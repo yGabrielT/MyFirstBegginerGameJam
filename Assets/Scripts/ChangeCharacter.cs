@@ -14,6 +14,7 @@ public class ChangeCharacter : MonoBehaviour
     public int characterIndex;
     private bool change = false;
     public bool toChangeNow = false;
+    private bool isWorking = true;
     [SerializeField] private CombatScript[] characterCombatScript;
     private void Awake()
     {
@@ -28,13 +29,13 @@ public class ChangeCharacter : MonoBehaviour
     }
     void Start()
     {
-        OrganizeArray();
+        characters[characterIndex] = FindPlayerArray();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F) && !change && characterIndex + 1 != characters.Length && characters[characterIndex + 1] != null && characters[characterIndex] != null) 
+        if(toChangeNow && !change && characterIndex + 1 != characters.Length) 
         {
             toChangeNow = false;
             OrganizeArray();
@@ -50,7 +51,7 @@ public class ChangeCharacter : MonoBehaviour
         
         change = true;
         Invoke("Cooldown", 2f);
-        if (characters[characterIndex + 1] != null && characters[characterIndex].gameObject.activeSelf)
+        if (characters[characterIndex + 1] != null && characters[characterIndex].gameObject.activeSelf && characters[characterIndex] != null)
         {
             Debug.Log("Searching");
 
@@ -71,23 +72,27 @@ public class ChangeCharacter : MonoBehaviour
 
     void ChangeCamera()
     {
-        //Deactivate previous player
-        characterPlayer[characterIndex].gameObject.SetActive(false);
-        Destroy(characters[characterIndex].gameObject, 2f);
+        if(characters[characterIndex + 1] != null && characters[characterIndex] != null)
+        {
+            //Deactivate previous player
+            characterPlayer[characterIndex].gameObject.SetActive(false);
+            Destroy(characters[characterIndex].gameObject, 2f);
 
-        //Activate next player bool to true
-        if (characterCombatScript[characterIndex + 1] != null)
-        {
-            characterCombatScript[characterIndex + 1].isPlayer = true;
-        }
-        else
-        {
-            Debug.Log(characterCombatScript[characterIndex + 1]);
+            //Activate next player bool to true
+            if (characterCombatScript[characterIndex + 1] != null)
+            {
+                characterCombatScript[characterIndex + 1].isPlayer = true;
+            }
+            else
+            {
+                Debug.Log(characterCombatScript[characterIndex + 1]);
+            }
+
+            //Activate player and deactivate previous IA
+            characterIA[characterIndex + 1].gameObject.SetActive(false);
+            characterPlayer[characterIndex + 1].gameObject.SetActive(true);
         }
         
-        //Activate player and deactivate previous IA
-        characterIA[characterIndex + 1].gameObject.SetActive(false);
-        characterPlayer[characterIndex + 1].gameObject.SetActive(true);
     }
 
     void Cooldown()
@@ -97,10 +102,10 @@ public class ChangeCharacter : MonoBehaviour
 
     GameObject FindPlayerArray()
     {
-        while (true)
-        {
-            var gObjsPlayer = GameObject.FindGameObjectsWithTag("Character");
+        var gObjsPlayer = GameObject.FindGameObjectsWithTag("Character");
 
+        if (gObjsPlayer != null || gObjsPlayer.Length != 0)
+        {
             for (int j = 0; j < gObjsPlayer.Length; j++)
             {
                 if (gObjsPlayer[j].GetComponent<CombatScript>().isPlayer && gObjsPlayer[j].activeSelf)
@@ -113,14 +118,14 @@ public class ChangeCharacter : MonoBehaviour
                 }
             }
         }
+        return null;
     }
 
     GameObject FindEnemiesArray()
     {
-        while (true)
+        var gObjsEnemies = GameObject.FindGameObjectsWithTag("Character");
+        if (gObjsEnemies != null || gObjsEnemies.Length != 0)
         {
-            var gObjsEnemies = GameObject.FindGameObjectsWithTag("Character");
-
             for (int x = 0; x < gObjsEnemies.Length; x++)
             {
                 if (!gObjsEnemies[x].GetComponent<CombatScript>().isPlayer && gObjsEnemies[x].activeSelf)
@@ -133,6 +138,7 @@ public class ChangeCharacter : MonoBehaviour
                 }
             }
         }
+        return null;
     }
 
     void OrganizeArray()
@@ -141,12 +147,17 @@ public class ChangeCharacter : MonoBehaviour
         {
             characterIndex = 0;
             characters[characterIndex] = FindPlayerArray();
-            characters[characterIndex + 1] = FindEnemiesArray();
+            //characters[characterIndex + 1] = FindEnemiesArray();
         }
         catch
         {
             Debug.Log("Oh no");
         }
         
+    }
+
+    public void ChangeWhenKill(GameObject enemyToBe)
+    {
+        characters[characterIndex + 1] = enemyToBe;
     }
 }

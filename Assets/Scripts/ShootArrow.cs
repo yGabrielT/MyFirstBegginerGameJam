@@ -6,6 +6,7 @@ using UnityEngine.Animations;
 public class ShootArrow : MonoBehaviour
 {
     [SerializeField] private GameObject arrowPrefab;
+    [SerializeField] private Transform arrowSpawn;
     [SerializeField] private float ArrowForce;
     [SerializeField] private GameObject aiPos;
     [SerializeField] private GameObject camPos;
@@ -27,14 +28,14 @@ public class ShootArrow : MonoBehaviour
         {
             if(aiPos != null && aiPos.activeSelf)
             {
-                var obj = Instantiate(arrowPrefab, transform.position, aiPos.transform.rotation);
+                var obj = Instantiate(arrowPrefab, arrowSpawn.position, aiPos.transform.rotation);
                 var rbobj = obj.GetComponent<Rigidbody>();
                 rbobj.AddForce(obj.transform.forward * ArrowForce, ForceMode.Impulse);
                 Destroy(obj, 5f);
             }
             else
             {
-                var obj = Instantiate(arrowPrefab, transform.position, camPos.transform.rotation);
+                var obj = Instantiate(arrowPrefab, arrowSpawn.position, camPos.transform.rotation);
                 var rbobj = obj.GetComponent<Rigidbody>();
                 rbobj.AddForce(obj.transform.forward * ArrowForce, ForceMode.Impulse);
                 Destroy(obj, 5f);
