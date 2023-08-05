@@ -932,8 +932,9 @@ MonoBehaviour:
   _cbScript: {fileID: 956664035807437563}
   isPlayerDamaged: 0
   _arrowDamage: 20
-  _swordDamage: 10
+  _swordDamage: 30
   _webDamage: 30
+  _knockResistance: 5
 --- !u!1 &2880331967765476909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,7 +1247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4068578529329672439}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.06, y: 0.58, z: -23.22}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1254,7 +1255,7 @@ Transform:
   - {fileID: 2044384728302192144}
   - {fileID: 8123404924113062416}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &956664035807437563
 MonoBehaviour:
@@ -1271,9 +1272,9 @@ MonoBehaviour:
   weapon: {fileID: 8722066108900913955}
   creature: 1
   isPlayer: 0
-  _cooldown: 1
-  IAHealth: 50
-  PlayerHealth: 50
+  _cooldown: 1.5
+  IAHealth: 75
+  PlayerHealth: 75
 --- !u!195 &2460134873093005500
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1284,7 +1285,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2015,8 +2016,9 @@ MonoBehaviour:
   _cbScript: {fileID: 956664035807437563}
   isPlayerDamaged: 0
   _arrowDamage: 20
-  _swordDamage: 10
+  _swordDamage: 30
   _webDamage: 30
+  _knockResistance: 2
 --- !u!65 &6877814663661451775
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2511,7 +2513,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 1606281439943741533, guid: 75ff761b31e6f644bafb25e5107b119a,
     type: 3}
   arrowSpawn: {fileID: 3883572235024169319}
-  ArrowForce: 20
+  ArrowForce: 30
   aiPos: {fileID: 7617228922009881604}
   camPos: {fileID: 0}
 --- !u!1 &8765577063554955675

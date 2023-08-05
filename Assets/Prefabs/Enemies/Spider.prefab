@@ -911,8 +911,9 @@ MonoBehaviour:
   _cbScript: {fileID: 5325815091077779667}
   isPlayerDamaged: 1
   _arrowDamage: 20
-  _swordDamage: 10
+  _swordDamage: 30
   _webDamage: 30
+  _knockResistance: 2
 --- !u!1 &2253540138611880479
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,8 +2561,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5159590447357985392}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -15.237958}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2569,8 +2570,8 @@ Transform:
   - {fileID: 1132851240806779663}
   - {fileID: 5642277398701420596}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &5325815091077779667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2587,8 +2588,8 @@ MonoBehaviour:
   creature: 2
   isPlayer: 0
   _cooldown: 2
-  IAHealth: 100
-  PlayerHealth: 100
+  IAHealth: 75
+  PlayerHealth: 75
 --- !u!195 &4957713538302801085
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2599,7 +2600,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -4115,8 +4116,9 @@ MonoBehaviour:
   _cbScript: {fileID: 5325815091077779667}
   isPlayerDamaged: 0
   _arrowDamage: 20
-  _swordDamage: 10
+  _swordDamage: 30
   _webDamage: 30
+  _knockResistance: 5
 --- !u!1 &7670311662875525563
 GameObject:
   m_ObjectHideFlags: 0
@@ -4552,7 +4554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
-  SprintSpeed: 10
+  SprintSpeed: 7.5
   RotationSpeed: 1
   SpeedChangeRate: 4
   JumpHeight: 2

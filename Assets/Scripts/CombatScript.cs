@@ -4,6 +4,7 @@ using UnityEngine;
 using StarterAssets;
 using Unity.VisualScripting;
 
+
 public class CombatScript : MonoBehaviour
 {
 
@@ -34,6 +35,28 @@ public class CombatScript : MonoBehaviour
     {
         ChangeOnDeath();
         ManageAttackTypePlayer();
+        CheckActualType();
+    }
+
+    void CheckActualType()
+    {
+        if (isPlayer)
+        {
+            switch (creature)
+            {
+                case Creature.Human:
+                    GameManager.instance.usingCharacter = GameManager.CharacterUsing.Human;
+                    break;
+                case Creature.Spider:
+                    GameManager.instance.usingCharacter = GameManager.CharacterUsing.Spider;
+                    break;
+                case Creature.Skeleton:
+                    GameManager.instance.usingCharacter = GameManager.CharacterUsing.Skeleton;
+                    break;
+
+            }
+        }
+        
     }
 
     private void ManageAttackTypePlayer()
@@ -59,19 +82,19 @@ public class CombatScript : MonoBehaviour
 
     public void ManageAttackTypeAI()
     {
-            switch (creature)
-            {
-                case Creature.Human:
-                    HumanAttack();
-                    break;
-                case Creature.Spider:
-                    SpiderAttack();
-                    break;
-                case Creature.Skeleton:
-                    SkeletonAttack();
-                    break;
+        switch (creature)
+        {
+            case Creature.Human:
+                HumanAttack();
+                break;
+            case Creature.Spider:
+                SpiderAttack();
+                break;
+            case Creature.Skeleton:
+                SkeletonAttack();
+                break;
 
-            }
+        }
     }
     private void HumanAttack()
     {
@@ -152,7 +175,7 @@ public class CombatScript : MonoBehaviour
         //game over
         if(PlayerHealth <= 0)
         {
-            Destroy(gameObject);
+            GameManager.instance.GameOver();
         }
     }
     

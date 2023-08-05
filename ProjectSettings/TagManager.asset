@@ -10,6 +10,8 @@ TagManager:
   - Web
   - Sword
   - Arrow
+  - PlayerSpawn
+  - EnemySpawn
   layers:
   - Default
   - TransparentFX

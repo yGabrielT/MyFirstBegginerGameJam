@@ -14,7 +14,6 @@ public class ChangeCharacter : MonoBehaviour
     public int characterIndex;
     private bool change = false;
     public bool toChangeNow = false;
-    private bool isWorking = true;
     [SerializeField] private CombatScript[] characterCombatScript;
     private void Awake()
     {
@@ -38,12 +37,20 @@ public class ChangeCharacter : MonoBehaviour
         if(toChangeNow && !change && characterIndex + 1 != characters.Length) 
         {
             toChangeNow = false;
+            
             OrganizeArray();
             FindRootCamera();
             ChangeCamera();
-            
+
+            Invoke("DelayFind", 1f);
+
         }
         
+    }
+
+    void DelayFind()
+    {
+        GameManager.instance.isThereEnemies = FindIfThereIsEnemies();
     }
 
     void FindRootCamera()
@@ -100,7 +107,7 @@ public class ChangeCharacter : MonoBehaviour
         change = false;
     }
 
-    GameObject FindPlayerArray()
+    public GameObject FindPlayerArray()
     {
         var gObjsPlayer = GameObject.FindGameObjectsWithTag("Character");
 
@@ -121,7 +128,8 @@ public class ChangeCharacter : MonoBehaviour
         return null;
     }
 
-    GameObject FindEnemiesArray()
+
+    bool FindIfThereIsEnemies()
     {
         var gObjsEnemies = GameObject.FindGameObjectsWithTag("Character");
         if (gObjsEnemies != null || gObjsEnemies.Length != 0)
@@ -130,16 +138,13 @@ public class ChangeCharacter : MonoBehaviour
             {
                 if (!gObjsEnemies[x].GetComponent<CombatScript>().isPlayer && gObjsEnemies[x].activeSelf)
                 {
-                    return gObjsEnemies[x].gameObject;
-                }
-                else
-                {
-                    Debug.Log("No enemy Found while changing character");
+                    return true;
                 }
             }
         }
-        return null;
+        return false;
     }
+
 
     void OrganizeArray()
     {
@@ -147,7 +152,8 @@ public class ChangeCharacter : MonoBehaviour
         {
             characterIndex = 0;
             characters[characterIndex] = FindPlayerArray();
-            //characters[characterIndex + 1] = FindEnemiesArray();
+
+            
         }
         catch
         {

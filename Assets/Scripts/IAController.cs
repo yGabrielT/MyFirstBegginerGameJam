@@ -12,6 +12,7 @@ public class IAController : MonoBehaviour
     [SerializeField] private float Attackrange;
     [SerializeField] private CombatScript combatEnemy;
     private float timeElapsed = .5f;
+    private bool isKnockbacking = false;
     private float agentOriginalSpeed;
     void Start()
     {
@@ -59,16 +60,18 @@ public class IAController : MonoBehaviour
         angle.z = 0;
         transform.rotation = Quaternion.Euler(angle);
         //Limits attack range
-        if (distanceToTarget >= Attackrange)
-        {
-            agent.speed = agentOriginalSpeed;
-            agent.SetDestination(targetPos.position);
-        }
-        // If is close dont walk more
-        else 
-        {
-            agent.speed = 0;
-        }
+
+
+            if (distanceToTarget >= Attackrange && !isKnockbacking)
+            {
+                agent.speed = agentOriginalSpeed;
+                agent.SetDestination(targetPos.position);
+            }
+            if (distanceToTarget < Attackrange && !isKnockbacking)
+            {
+                agent.speed = 0;
+            }
+        
             
     }
 
@@ -86,6 +89,15 @@ public class IAController : MonoBehaviour
         
     }
 
+    public void KnockBack(float knockBackForce)
+    {
+        isKnockbacking = true;
+        Invoke(nameof(cooldownKnock),2f);
+        agent.speed = agentOriginalSpeed;
+        Vector3 direction = agent.transform.position - targetPos.position;
+        agent.SetDestination(direction * knockBackForce);
+    }
+
     void AttackReference()
     {
         combatEnemy.ManageAttackTypeAI();
@@ -95,5 +107,10 @@ public class IAController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, Attackrange);
+    }
+
+    void cooldownKnock()
+    {
+        isKnockbacking = false;
     }
 }
