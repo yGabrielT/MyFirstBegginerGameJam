@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cbScript: {fileID: 956664035807437563}
-  isPlayerDamaged: 0
+  isPlayerDamaged: 1
   _arrowDamage: 20
   _swordDamage: 30
   _webDamage: 30
@@ -1272,6 +1272,8 @@ MonoBehaviour:
   weapon: {fileID: 8722066108900913955}
   creature: 1
   isPlayer: 0
+  hpImage: {fileID: 0}
+  hpText: {fileID: 0}
   _cooldown: 1.5
   IAHealth: 75
   PlayerHealth: 75

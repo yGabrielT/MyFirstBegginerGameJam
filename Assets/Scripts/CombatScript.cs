@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 using Unity.VisualScripting;
-
+using UnityEngine.UI;
+using TMPro;
 
 public class CombatScript : MonoBehaviour
 {
@@ -23,16 +24,32 @@ public class CombatScript : MonoBehaviour
     private ShootArrow _shootArrow;
     private ShootWeb _shootWeb;
     private Animator _shootWebAnimator;
+    [SerializeField] Image hpImage;
+    [SerializeField] TextMeshProUGUI hpText;
     [SerializeField] private float _cooldown = 1f;
 
+    private float maxHp;
     public float IAHealth = 100;
     public float PlayerHealth = 100;
 
     void Awake()
     {
     }
+
+    void Start()
+    {
+        maxHp = PlayerHealth;
+        hpImage = GameObject.FindWithTag("HP").GetComponent<Image>();
+        hpText = GameObject.FindWithTag("HPtext").GetComponent<TextMeshProUGUI>();
+    }
     void Update()
     {
+        if (isPlayer)
+        {
+            hpText.text = "HP " + PlayerHealth + "/" + maxHp;
+            hpText.ForceMeshUpdate(true);
+            hpImage.fillAmount = PlayerHealth / maxHp;
+        }
         ChangeOnDeath();
         ManageAttackTypePlayer();
         CheckActualType();
@@ -175,7 +192,7 @@ public class CombatScript : MonoBehaviour
         //game over
         if(PlayerHealth <= 0)
         {
-            GameManager.instance.GameOver();
+            GameManager.instance.NextDifficulty();
         }
     }
     

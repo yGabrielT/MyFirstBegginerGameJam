@@ -12,6 +12,9 @@ TagManager:
   - Arrow
   - PlayerSpawn
   - EnemySpawn
+  - HP
+  - HPtext
+  - Score
   layers:
   - Default
   - TransparentFX

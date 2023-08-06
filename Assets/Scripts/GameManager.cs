@@ -1,5 +1,7 @@
+using EasyTransition;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,9 +20,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] _playerPrefabs;
     [SerializeField] private GameObject[] _enemiesPrefabs;
     [SerializeField] private int _difficulty = 0;
+    [SerializeField] private float _timeToStart = 3f;
     public bool isThereEnemies = true;
     public bool _isStarted = false;
     private Scene scene;
+
+    [SerializeField] public int RoundsSurvived = 0;
+    [SerializeField] private TextMeshProUGUI score;
+
+
     private void Awake()
     {
 
@@ -42,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        score = GameObject.FindWithTag("Score").GetComponent<TextMeshProUGUI>();
         
         if (!_isStarted)
         {
@@ -49,15 +58,33 @@ public class GameManager : MonoBehaviour
             StartGame();
         }
     }
-    // When winnig end the game
+
     public void GameOver()
     {
-        scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        MenuManager.instance.GoToGameOver();
+        score = GameObject.FindWithTag("Score").GetComponent<TextMeshProUGUI>();
+        if (score != null)
+        {
+            score.text = "You spectated " + RoundsSurvived + " rounds.";
+        }
+        _difficulty = 0;
+        usingCharacter = CharacterUsing.Human;
+    }
+    // When winnig next difficulty
+    public void NextDifficulty()
+    {
+        MenuManager.instance.StartingGame();
+
     }
 
     public void StartGame()
     {
+        if (score != null)
+        {
+            score.text = "Round: " + RoundsSurvived;
+        }
+        RoundsSurvived++;
+        Debug.Log("Spawning");
         _playerSpawnPoint = GameObject.FindWithTag("PlayerSpawn").GetComponent<Transform>();
         _enemySpawnPoint = GameObject.FindWithTag("EnemySpawn").GetComponent<Transform>();
 
@@ -74,6 +101,16 @@ public class GameManager : MonoBehaviour
                 Instantiate(_playerPrefabs[2], _playerSpawnPoint.position, Quaternion.identity);
                 break;
         }
+        /*
+        if (_difficulty > 3)
+        {
+
+            for (int i = 0; i < InverseGetRandomEnemyNubers(_difficulty); i++)
+            {
+                Instantiate(_enemiesPrefabs[getRandomEnemyNubers(0)], getRandomEnemySpawn(), Quaternion.identity);
+            }
+        }*/
+
         //Spawn Enemies
         switch (_difficulty)
         {
@@ -92,24 +129,23 @@ public class GameManager : MonoBehaviour
                 Instantiate(_enemiesPrefabs[1], getRandomEnemySpawn(), Quaternion.identity);
                 Instantiate(_enemiesPrefabs[0], getRandomEnemySpawn(), Quaternion.identity);
                 break;
+            default:
+                for (int i = 0; i < _difficulty; i++)
+                {
+                    Instantiate(_enemiesPrefabs[getRandomEnemyNubers(0)], getRandomEnemySpawn(), Quaternion.identity);
+                }
+                break;
         }
 
-        if (_difficulty > 3)
-        {
-            
-            for(int i = 0 ; i < InverseGetRandomEnemyNubers(_difficulty); i++)
-            {
-                Instantiate(_enemiesPrefabs[getRandomEnemyNubers(0)], getRandomEnemySpawn(), Quaternion.identity);
-            }
-        }
+        
     }
 
     void ChangeDifficulty()
     {
         
         _difficulty++;
-        GameOver();
-        Invoke(nameof(StartGame),.5f);
+        NextDifficulty();
+        Invoke(nameof(StartGame),_timeToStart);
     }
 
     void Update()
@@ -129,14 +165,9 @@ public class GameManager : MonoBehaviour
 
     int getRandomEnemyNubers(int bonus)
     {
-        return Random.Range(0,2) + bonus;
+        return Random.Range(0,3) + bonus;
 
     }
 
-    int InverseGetRandomEnemyNubers(int value)
-    {
-        return Random.Range(0, 2) - value;
-
-    }
 
 }
