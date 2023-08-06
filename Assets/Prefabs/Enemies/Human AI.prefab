@@ -1184,6 +1184,8 @@ MonoBehaviour:
   weapon: {fileID: 5192231533108987107}
   creature: 0
   isPlayer: 0
+  hpImage: {fileID: 0}
+  hpText: {fileID: 0}
   _cooldown: 1.5
   IAHealth: 100
   PlayerHealth: 100
@@ -1494,6 +1496,7 @@ GameObject:
   - component: {fileID: 842328695960492732}
   - component: {fileID: 6669765746208895714}
   - component: {fileID: 1200626202143709653}
+  - component: {fileID: 7124425425505767712}
   m_Layer: 0
   m_Name: T-Pose
   m_TagString: Untagged
@@ -1619,6 +1622,7 @@ MonoBehaviour:
   _swordDamage: 30
   _webDamage: 30
   _knockResistance: 0
+  hitaudio: {fileID: 8300000, guid: 5785c5ba3928db348af4a6e920faaac8, type: 3}
 --- !u!65 &1200626202143709653
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1640,6 +1644,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.7211412, z: 0.9774118}
   m_Center: {x: 0, y: 2.1229408, z: 0.011294149}
+--- !u!114 &7124425425505767712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348150125624860497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc9c80153d08e940b3859adf3c1b8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomClip:
+  - {fileID: 8300000, guid: aaaba204b3cd1524bbf95bdfd9a7eaec, type: 3}
+  - {fileID: 8300000, guid: 088d86f17612dfd4d89cef2ee196b653, type: 3}
+  - {fileID: 8300000, guid: f704828589bcd8847821b1692bf7ecf8, type: 3}
+  - {fileID: 8300000, guid: dde54811b2e580940b840941371a265d, type: 3}
+  - {fileID: 8300000, guid: 4d5754516226a8f46b2538e4a09d27bf, type: 3}
+  - {fileID: 8300000, guid: 94cfb2e26f99e514b891f8fa88ad0d83, type: 3}
+  - {fileID: 8300000, guid: ab0b9350653084b4c97b9dfccdce3d32, type: 3}
+  - {fileID: 8300000, guid: fca529827bf67334c80d5a0dcf37b1ac, type: 3}
+  - {fileID: 8300000, guid: c096a20772ba3a34992bba8dcd0797fb, type: 3}
+  - {fileID: 8300000, guid: a06240327cba5b944a5f6b25028d552d, type: 3}
+  OneClip: {fileID: 0}
 --- !u!1 &4457879553159313699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2015,6 +2043,7 @@ GameObject:
   - component: {fileID: 1569014744728859747}
   - component: {fileID: 169149168070026266}
   - component: {fileID: 7603873524753816266}
+  - component: {fileID: 4971280247960314039}
   m_Layer: 8
   m_Name: SwordWarrior
   m_TagString: Sword
@@ -2157,6 +2186,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4971280247960314039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5192231533108987107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc9c80153d08e940b3859adf3c1b8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomClip:
+  - {fileID: 8300000, guid: 9df8709d6873ff54a8fabee885586b6c, type: 3}
+  - {fileID: 8300000, guid: f4ae59af36c570d428c269b444b4dae5, type: 3}
+  - {fileID: 8300000, guid: dbdbaedea38bf0b4080da9bc4d274612, type: 3}
+  - {fileID: 8300000, guid: 113d522fd89d79045bfd0a5ab3645cf8, type: 3}
+  - {fileID: 8300000, guid: f3869db9dbd50b24ab199a980ef91a97, type: 3}
+  - {fileID: 8300000, guid: db455104a4ca47841aec6dd1686d2684, type: 3}
+  - {fileID: 8300000, guid: f3e3f54ca1964e640a68a8bb5c3b1912, type: 3}
+  - {fileID: 8300000, guid: b42d04d95d281b94c82f434d6b283bb7, type: 3}
+  - {fileID: 8300000, guid: 13718040e5326ba488d50a4827d1ab04, type: 3}
+  OneClip: {fileID: 0}
 --- !u!1 &5211469952417939725
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,6 +2617,7 @@ GameObject:
   - component: {fileID: 9156173508043476882}
   - component: {fileID: 8400119508913554942}
   - component: {fileID: 4623334950980037540}
+  - component: {fileID: 4990690656605351198}
   m_Layer: 0
   m_Name: T-Pose
   m_TagString: Untagged
@@ -2690,6 +2743,7 @@ MonoBehaviour:
   _swordDamage: 30
   _webDamage: 30
   _knockResistance: 5
+  hitaudio: {fileID: 8300000, guid: 5785c5ba3928db348af4a6e920faaac8, type: 3}
 --- !u!65 &4623334950980037540
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2711,6 +2765,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 2.744802, z: 0.9774118}
   m_Center: {x: 0, y: 1.6111164, z: 0.01129415}
+--- !u!114 &4990690656605351198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317202018717081625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc9c80153d08e940b3859adf3c1b8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomClip:
+  - {fileID: 8300000, guid: aaaba204b3cd1524bbf95bdfd9a7eaec, type: 3}
+  - {fileID: 8300000, guid: 088d86f17612dfd4d89cef2ee196b653, type: 3}
+  - {fileID: 8300000, guid: f704828589bcd8847821b1692bf7ecf8, type: 3}
+  - {fileID: 8300000, guid: dde54811b2e580940b840941371a265d, type: 3}
+  - {fileID: 8300000, guid: 4d5754516226a8f46b2538e4a09d27bf, type: 3}
+  - {fileID: 8300000, guid: 94cfb2e26f99e514b891f8fa88ad0d83, type: 3}
+  - {fileID: 8300000, guid: ab0b9350653084b4c97b9dfccdce3d32, type: 3}
+  - {fileID: 8300000, guid: fca529827bf67334c80d5a0dcf37b1ac, type: 3}
+  - {fileID: 8300000, guid: c096a20772ba3a34992bba8dcd0797fb, type: 3}
+  - {fileID: 8300000, guid: a06240327cba5b944a5f6b25028d552d, type: 3}
+  OneClip: {fileID: 0}
 --- !u!1 &6317695403416986780
 GameObject:
   m_ObjectHideFlags: 0

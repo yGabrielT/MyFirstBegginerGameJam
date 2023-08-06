@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int RoundsSurvived = 0;
     [SerializeField] private TextMeshProUGUI score;
 
+    [SerializeField] private AudioClip audioVictory;
 
     private void Awake()
     {
@@ -39,8 +40,9 @@ public class GameManager : MonoBehaviour
         else
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
+        
 
         
 
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        score = GameObject.FindWithTag("Score").GetComponent<TextMeshProUGUI>();
+        
         
         if (!_isStarted)
         {
@@ -62,13 +64,19 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         MenuManager.instance.GoToGameOver();
+        Invoke(nameof(ChangeOverScore), _timeToStart);
+    }
+
+    private void ChangeOverScore()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         score = GameObject.FindWithTag("Score").GetComponent<TextMeshProUGUI>();
         if (score != null)
         {
             score.text = "You spectated " + RoundsSurvived + " rounds.";
         }
-        _difficulty = 0;
-        usingCharacter = CharacterUsing.Human;
+        Destroy(gameObject);
     }
     // When winnig next difficulty
     public void NextDifficulty()
@@ -79,11 +87,13 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        RoundsSurvived++;
+        score = GameObject.FindWithTag("Score").GetComponent<TextMeshProUGUI>();
         if (score != null)
         {
             score.text = "Round: " + RoundsSurvived;
         }
-        RoundsSurvived++;
+        
         Debug.Log("Spawning");
         _playerSpawnPoint = GameObject.FindWithTag("PlayerSpawn").GetComponent<Transform>();
         _enemySpawnPoint = GameObject.FindWithTag("EnemySpawn").GetComponent<Transform>();
@@ -153,8 +163,8 @@ public class GameManager : MonoBehaviour
         if (!isThereEnemies)
         {
             isThereEnemies = true;
-            
-            Invoke("ChangeDifficulty",3f);
+            AudioSource.PlayClipAtPoint(audioVictory, Camera.main.transform.position);
+            Invoke("ChangeDifficulty",3.5f);
         }
     }
 

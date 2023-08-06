@@ -622,6 +622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8210112408626616026}
   - component: {fileID: 8870173310348161024}
+  - component: {fileID: 2169820344675765178}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -660,6 +661,20 @@ MonoBehaviour:
     type: 3}
   webForce: 30
   aiPos: {fileID: 3764762851931695643}
+--- !u!114 &2169820344675765178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836541361421657362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc9c80153d08e940b3859adf3c1b8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomClip: []
+  OneClip: {fileID: 8300000, guid: 10d9a17e4bd4da34a8d1746452dc96ef, type: 3}
 --- !u!1 &1920445793860067122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,6 +1330,8 @@ MonoBehaviour:
   weapon: {fileID: 1836541361421657362}
   creature: 2
   isPlayer: 1
+  hpImage: {fileID: 0}
+  hpText: {fileID: 0}
   _cooldown: 2
   IAHealth: 75
   PlayerHealth: 75
@@ -2880,6 +2897,7 @@ GameObject:
   - component: {fileID: 3034309041456836741}
   - component: {fileID: 6160129836325651292}
   - component: {fileID: 5187565377543174376}
+  - component: {fileID: 6670394221430484368}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -2964,6 +2982,31 @@ MonoBehaviour:
   _swordDamage: 30
   _webDamage: 30
   _knockResistance: 5
+  hitaudio: {fileID: 8300000, guid: 5785c5ba3928db348af4a6e920faaac8, type: 3}
+--- !u!114 &6670394221430484368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5934985819168121399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc9c80153d08e940b3859adf3c1b8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomClip:
+  - {fileID: 8300000, guid: aaaba204b3cd1524bbf95bdfd9a7eaec, type: 3}
+  - {fileID: 8300000, guid: 088d86f17612dfd4d89cef2ee196b653, type: 3}
+  - {fileID: 8300000, guid: f704828589bcd8847821b1692bf7ecf8, type: 3}
+  - {fileID: 8300000, guid: dde54811b2e580940b840941371a265d, type: 3}
+  - {fileID: 8300000, guid: 4d5754516226a8f46b2538e4a09d27bf, type: 3}
+  - {fileID: 8300000, guid: 94cfb2e26f99e514b891f8fa88ad0d83, type: 3}
+  - {fileID: 8300000, guid: ab0b9350653084b4c97b9dfccdce3d32, type: 3}
+  - {fileID: 8300000, guid: fca529827bf67334c80d5a0dcf37b1ac, type: 3}
+  - {fileID: 8300000, guid: c096a20772ba3a34992bba8dcd0797fb, type: 3}
+  - {fileID: 8300000, guid: a06240327cba5b944a5f6b25028d552d, type: 3}
+  OneClip: {fileID: 0}
 --- !u!1 &6126513292417253255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3260,6 +3303,7 @@ GameObject:
   - component: {fileID: 5964794176725923364}
   - component: {fileID: 1078894602216512841}
   - component: {fileID: 7747904700775065127}
+  - component: {fileID: 4173927215216696943}
   m_Layer: 0
   m_Name: Spider
   m_TagString: Untagged
@@ -3344,6 +3388,31 @@ MonoBehaviour:
   _swordDamage: 30
   _webDamage: 30
   _knockResistance: 2
+  hitaudio: {fileID: 8300000, guid: 5785c5ba3928db348af4a6e920faaac8, type: 3}
+--- !u!114 &4173927215216696943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6572413152997564770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc9c80153d08e940b3859adf3c1b8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomClip:
+  - {fileID: 8300000, guid: aaaba204b3cd1524bbf95bdfd9a7eaec, type: 3}
+  - {fileID: 8300000, guid: 088d86f17612dfd4d89cef2ee196b653, type: 3}
+  - {fileID: 8300000, guid: f704828589bcd8847821b1692bf7ecf8, type: 3}
+  - {fileID: 8300000, guid: dde54811b2e580940b840941371a265d, type: 3}
+  - {fileID: 8300000, guid: 4d5754516226a8f46b2538e4a09d27bf, type: 3}
+  - {fileID: 8300000, guid: 94cfb2e26f99e514b891f8fa88ad0d83, type: 3}
+  - {fileID: 8300000, guid: ab0b9350653084b4c97b9dfccdce3d32, type: 3}
+  - {fileID: 8300000, guid: fca529827bf67334c80d5a0dcf37b1ac, type: 3}
+  - {fileID: 8300000, guid: c096a20772ba3a34992bba8dcd0797fb, type: 3}
+  - {fileID: 8300000, guid: a06240327cba5b944a5f6b25028d552d, type: 3}
+  OneClip: {fileID: 0}
 --- !u!1 &6620196843210109467
 GameObject:
   m_ObjectHideFlags: 0

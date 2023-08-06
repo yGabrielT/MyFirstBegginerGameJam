@@ -192,7 +192,7 @@ public class CombatScript : MonoBehaviour
         //game over
         if(PlayerHealth <= 0)
         {
-            GameManager.instance.NextDifficulty();
+            GameManager.instance.GameOver();
         }
     }
     

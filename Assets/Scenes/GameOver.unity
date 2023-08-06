@@ -283,16 +283,16 @@ RectTransform:
   m_GameObject: {fileID: 665703699}
   m_LocalRotation: {x: -0.0036950589, y: 0.0045912922, z: -0.06311139, w: 0.9979891}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.111692, y: 3.111692, z: 3.111692}
+  m_LocalScale: {x: 0.39851853, y: 0.39851853, z: 0.39851853}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1170540352}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -0.389, y: 0.552, z: -7.239}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -167}
-  m_SizeDelta: {x: 120, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 195.8}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &665703701
 MonoBehaviour:
@@ -316,13 +316,13 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -2142637820, guid: 74143ce478480c741a205e7db1739aa9, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &665703702
 CanvasRenderer:
@@ -674,11 +674,11 @@ MonoBehaviour:
   backToMenuScene: Menu
   StartGameScene: Fase
   GameOverScene: GameOver
-  manager: {fileID: 0}
+  manager: {fileID: 1630556101}
   delay: 0
   transitionSetting: {fileID: 11400000, guid: b0126e1e0c6c2a04895d564bd230dfb9, type: 2}
-  RoundsSurvived: 0
-  score: {fileID: 0}
+  audioClick: {fileID: 8300000, guid: f6be08fd6c653374f9040ab21d5ca967, type: 3}
+  audioDie: {fileID: 8300000, guid: 10c1dc9916f4e694fae0e8e476162a9f, type: 3}
 --- !u!4 &1630556100
 Transform:
   m_ObjectHideFlags: 0

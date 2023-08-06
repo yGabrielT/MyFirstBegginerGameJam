@@ -14,6 +14,7 @@ public class HealthManager : MonoBehaviour
     private IAController aController;
     private Vector3 _originalScale;
     private Vector3 _toScale;
+    [SerializeField] private AudioClip hitaudio;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,12 +29,14 @@ public class HealthManager : MonoBehaviour
 
         if (other.gameObject.tag == "Sword")
         {
+            AudioSource.PlayClipAtPoint(hitaudio, transform.position);
             _cbScript.ManageHealth(isPlayerDamaged, _swordDamage);
             aController?.KnockBack(_knockResistance);
             transform.DOShakeScale(.2f, new Vector3(0.4f, 0.3f, 0.1f), 1, 20, true, ShakeRandomnessMode.Full);
         }
         if (other.gameObject.tag == "Web")
         {
+            AudioSource.PlayClipAtPoint(hitaudio, transform.position);
             _cbScript.ManageHealth(isPlayerDamaged, _webDamage);
             aController?.KnockBack(_knockResistance);
             
@@ -43,6 +46,7 @@ public class HealthManager : MonoBehaviour
         }
         if (other.gameObject.tag == "Arrow")
         {
+            AudioSource.PlayClipAtPoint(hitaudio, transform.position);
             _cbScript.ManageHealth(isPlayerDamaged, _arrowDamage);
             aController?.KnockBack(_knockResistance);
             Destroy(other.gameObject);

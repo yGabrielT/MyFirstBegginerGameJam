@@ -18,6 +18,10 @@ public class MenuManager : MonoBehaviour
     public TransitionManager manager;
     [SerializeField] private float delay;
     [SerializeField] TransitionSettings transitionSetting;
+    [SerializeField] private AudioClip audioClick;
+    [SerializeField] private AudioClip audioDie;
+    private float volume = 2f;
+    private bool change = false;
 
     void Start()
     {
@@ -34,29 +38,41 @@ public class MenuManager : MonoBehaviour
     }
     public void StartButton()
     {
+        AudioSource.PlayClipAtPoint(audioClick, Camera.main.transform.position, volume);
         manager.Transition(cutScene, transitionSetting, delay);
     }
     public void CreditsButton()
     {
+        AudioSource.PlayClipAtPoint(audioClick, Camera.main.transform.position, volume);
         manager.Transition(creditsScene, transitionSetting, delay);
     }
 
     public void BackToMenuButton()
     {
+        AudioSource.PlayClipAtPoint(audioClick, Camera.main.transform.position, volume);
         manager.Transition(backToMenuScene, transitionSetting, delay);
     }
     public void StartingGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         manager.Transition(StartGameScene, transitionSetting, delay);
     }
 
     public void GoToGameOver()
     {
-        manager.Transition(GameOverScene, transitionSetting, delay);
+        if (!change)
+        {
+            change = true;
+            AudioSource.PlayClipAtPoint(audioDie, Camera.main.transform.position, volume);
+            manager.Transition(GameOverScene, transitionSetting, delay);
+        }
+        
 
     }
     public void ExitButton()
     {
+        AudioSource.PlayClipAtPoint(audioClick, Camera.main.transform.position, volume);
         Application.Quit();
     }
 }

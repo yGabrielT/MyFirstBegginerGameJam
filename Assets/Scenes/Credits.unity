@@ -463,9 +463,11 @@ MonoBehaviour:
   backToMenuScene: Menu
   StartGameScene: Fase
   GameOverScene: GameOver
-  manager: {fileID: 0}
+  manager: {fileID: 1630556101}
   delay: 0
   transitionSetting: {fileID: 11400000, guid: b0126e1e0c6c2a04895d564bd230dfb9, type: 2}
+  audioClick: {fileID: 8300000, guid: f6be08fd6c653374f9040ab21d5ca967, type: 3}
+  audioDie: {fileID: 8300000, guid: 10c1dc9916f4e694fae0e8e476162a9f, type: 3}
 --- !u!4 &1630556100
 Transform:
   m_ObjectHideFlags: 0

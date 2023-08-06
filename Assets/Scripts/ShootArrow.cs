@@ -10,9 +10,11 @@ public class ShootArrow : MonoBehaviour
     [SerializeField] private float ArrowForce;
     [SerializeField] private GameObject aiPos;
     [SerializeField] private GameObject camPos;
+    private PlayAudio audioArrow;
     // Start is called before the first frame update
     void Start()
     {
+        audioArrow = GetComponent<PlayAudio>();
         camPos = Camera.main.gameObject;
     }
 
@@ -31,6 +33,7 @@ public class ShootArrow : MonoBehaviour
                 var obj = Instantiate(arrowPrefab, arrowSpawn.position, aiPos.transform.rotation);
                 var rbobj = obj.GetComponent<Rigidbody>();
                 rbobj.AddForce(obj.transform.forward * ArrowForce, ForceMode.Impulse);
+                audioArrow.playNormalAudio();
                 Destroy(obj, 5f);
             }
             else

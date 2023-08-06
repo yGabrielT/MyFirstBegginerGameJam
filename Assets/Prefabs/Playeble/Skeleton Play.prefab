@@ -524,6 +524,7 @@ GameObject:
   - component: {fileID: 3837814538755574953}
   - component: {fileID: 3206749276021496556}
   - component: {fileID: 782794789088595365}
+  - component: {fileID: 3347162524166245655}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -639,6 +640,7 @@ MonoBehaviour:
   _swordDamage: 30
   _webDamage: 30
   _knockResistance: 2
+  hitaudio: {fileID: 8300000, guid: 5785c5ba3928db348af4a6e920faaac8, type: 3}
 --- !u!65 &782794789088595365
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -660,6 +662,30 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.6745281, y: 3.1678822, z: 1.6506958}
   m_Center: {x: -0.027585031, y: 3.644881, z: -0.017423632}
+--- !u!114 &3347162524166245655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707416856055028972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc9c80153d08e940b3859adf3c1b8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomClip:
+  - {fileID: 8300000, guid: aaaba204b3cd1524bbf95bdfd9a7eaec, type: 3}
+  - {fileID: 8300000, guid: 088d86f17612dfd4d89cef2ee196b653, type: 3}
+  - {fileID: 8300000, guid: f704828589bcd8847821b1692bf7ecf8, type: 3}
+  - {fileID: 8300000, guid: dde54811b2e580940b840941371a265d, type: 3}
+  - {fileID: 8300000, guid: 4d5754516226a8f46b2538e4a09d27bf, type: 3}
+  - {fileID: 8300000, guid: 94cfb2e26f99e514b891f8fa88ad0d83, type: 3}
+  - {fileID: 8300000, guid: ab0b9350653084b4c97b9dfccdce3d32, type: 3}
+  - {fileID: 8300000, guid: fca529827bf67334c80d5a0dcf37b1ac, type: 3}
+  - {fileID: 8300000, guid: c096a20772ba3a34992bba8dcd0797fb, type: 3}
+  - {fileID: 8300000, guid: a06240327cba5b944a5f6b25028d552d, type: 3}
+  OneClip: {fileID: 0}
 --- !u!1 &1729268490296181647
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,6 +1468,7 @@ GameObject:
   - component: {fileID: 149595865952213814}
   - component: {fileID: 9030621937819367614}
   - component: {fileID: 3050139167186751722}
+  - component: {fileID: 78332902889010703}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Untagged
@@ -1578,6 +1605,31 @@ MonoBehaviour:
   _swordDamage: 30
   _webDamage: 30
   _knockResistance: 5
+  hitaudio: {fileID: 8300000, guid: 5785c5ba3928db348af4a6e920faaac8, type: 3}
+--- !u!114 &78332902889010703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5445457339771371026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc9c80153d08e940b3859adf3c1b8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomClip:
+  - {fileID: 8300000, guid: aaaba204b3cd1524bbf95bdfd9a7eaec, type: 3}
+  - {fileID: 8300000, guid: 088d86f17612dfd4d89cef2ee196b653, type: 3}
+  - {fileID: 8300000, guid: f704828589bcd8847821b1692bf7ecf8, type: 3}
+  - {fileID: 8300000, guid: dde54811b2e580940b840941371a265d, type: 3}
+  - {fileID: 8300000, guid: 4d5754516226a8f46b2538e4a09d27bf, type: 3}
+  - {fileID: 8300000, guid: 94cfb2e26f99e514b891f8fa88ad0d83, type: 3}
+  - {fileID: 8300000, guid: ab0b9350653084b4c97b9dfccdce3d32, type: 3}
+  - {fileID: 8300000, guid: fca529827bf67334c80d5a0dcf37b1ac, type: 3}
+  - {fileID: 8300000, guid: c096a20772ba3a34992bba8dcd0797fb, type: 3}
+  - {fileID: 8300000, guid: a06240327cba5b944a5f6b25028d552d, type: 3}
+  OneClip: {fileID: 0}
 --- !u!1 &5548054445412050231
 GameObject:
   m_ObjectHideFlags: 0
@@ -2303,6 +2355,7 @@ GameObject:
   - component: {fileID: 4129633806121903065}
   - component: {fileID: 3032612496593532123}
   - component: {fileID: 7804359938920989056}
+  - component: {fileID: 6548917819449918917}
   m_Layer: 0
   m_Name: Bow_Wooden
   m_TagString: Untagged
@@ -2397,6 +2450,20 @@ MonoBehaviour:
   ArrowForce: 30
   aiPos: {fileID: 3142006045948961891}
   camPos: {fileID: 0}
+--- !u!114 &6548917819449918917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8603062125416291705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc9c80153d08e940b3859adf3c1b8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomClip: []
+  OneClip: {fileID: 8300000, guid: dc19bb5173c369c419f1933aff12df9c, type: 3}
 --- !u!1 &8647440573504753860
 GameObject:
   m_ObjectHideFlags: 0
